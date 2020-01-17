@@ -1,0 +1,34 @@
+# Network Data- Part 1
+
+## Sockets in Python
+
+Python has built-in support for TCP Sockets
+
+### code
+    import socket
+    mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    mysock.connect( ('data.pr4e.org', 80) )  #Port is 80 and data.pr4e.org is Host ...this is like dialing the phone
+    
+## Hypertext Transfer Protocol (HTTP)
+
+Since TCP (and Python) gives us a reliable socket, what do we want to do with the socket? What problem do
+we want to solve?
+
+ . The dominant Application Layer Protocol on the Internet is HTTP.
+ . (Protocols are important standards. For example, in Western cultures the person who answers the phone says "Hello" first.
+ . HTTP was invented as a set of rules to retrieve documents from the Web - to Retrieve HTML, Images, Documents, etc.
+ . Extended to be data in addition to documents - RSS, Web Services,etc.. Basic Concepts - Make a Connection - Request a document - Retrieve the Document - Close the Connection
+ 
+**Application Protocols**
+1. Mail
+2. World Wide Web
+
+Protocol Example:
+http://www.dr-chuck.com/page1.htm
+
+<div class="text-purple">
+  This text is purple, <a href="#" class="text-inherit">including the link</a>
+</div>
+
+
+- 
