@@ -16,21 +16,20 @@ We provide two files for this assignment. One is a sample file where we give you
 *The basic outline of this problem is to read the file, look for integers using the re.findall(), looking for a regular expression of '[0-9]+' and then converting the extracted strings to integers and summing up the integers.*
 
 **Answer:**
-
 ### code
-import re
+    import re
 
-hand = open("regex_sum_60345.txt")
-x=list()
-for line in hand:
-     y = re.findall('[0-9]+',line)
-     x = x+y
+    hand = open("regex_sum_60345.txt")
+    x=list()
+    for line in hand:
+        y = re.findall('[0-9]+',line)
+        x = x+y
 
-sum=0
-for z in x:
-    sum = sum + int(z)
+    sum=0
+    for z in x:
+        sum = sum + int(z)
 
-print(sum)
+    print(sum)
 
 Sum = 369400
 
