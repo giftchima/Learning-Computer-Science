@@ -1,4 +1,5 @@
-**Finding Numbers in a Haystack**
+## Finding Numbers in a Haystack
+
 
 *In this assignment you will read through and parse a file with text and numbers. You will extract all the numbers in the file and compute the sum of the numbers.*
 
@@ -16,6 +17,7 @@ We provide two files for this assignment. One is a sample file where we give you
 
 **Answer:**
 
+### code
 import re
 
 hand = open("regex_sum_60345.txt")
