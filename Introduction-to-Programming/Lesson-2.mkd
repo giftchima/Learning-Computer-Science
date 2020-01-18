@@ -114,6 +114,7 @@ There are three ways that you might retrieve this web page and look at the respo
 3. Use the telnet program as shown in lecture to retrieve the headers and content.
 
 #### Enter the header values in each of the fields below and press "Submit".
+##### Answer:
 Last-Modified:
 Sat, 13 May 2017 11:22:22 GMT
  
