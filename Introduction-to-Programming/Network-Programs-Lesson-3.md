@@ -106,13 +106,13 @@
 
 ## Quiz: Reading Web Data From Python
 
-1. Which of the following Python data structures is most similar to the value returned in this line of Python:
+#### 1. Which of the following Python data structures is most similar to the value returned in this line of Python:
 
 x = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
 
-** Answer: file handle **
+##### Answer: file handle 
 
-2. In this Python code, which line actually reads the data?
+#### 2. In this Python code, which line actually reads the data?
 
 import socket
 
@@ -128,10 +128,12 @@ while True:
     print(data.decode())
 mysock.close()
 
-3. Which of the following regular expressions would extract the URL from this line of HTML:
+##### Answer: mysock.recv()
+
+#### 3. Which of the following regular expressions would extract the URL from this line of HTML:
 <p>Please click <a href="http://www.dr-chuck.com">here</a></p>
 
-4. In this Python code, which line is most like the open() call to read a file:
+#### 4. In this Python code, which line is most like the open() call to read a file:
 
 import socket
 
@@ -147,18 +149,18 @@ while True:
     print(data.decode())
 mysock.close()
 
-5. Which HTTP header tells the browser the kind of document that is being returned?
+#### 5. Which HTTP header tells the browser the kind of document that is being returned?
 
-6. What should you check before scraping a web site?
+#### 6. What should you check before scraping a web site?
 
-7. What is the purpose of the BeautifulSoup Python library?
+#### 7. What is the purpose of the BeautifulSoup Python library?
 
-8. What ends up in the "x" variable in the following code:
+#### 8. What ends up in the "x" variable in the following code:
 html = urllib.request.urlopen(url).read()
 soup = BeautifulSoup(html, 'html.parser')
 x = soup('a')
 
-9. What is the most common Unicode encoding when moving data between systems?
+#### 9. What is the most common Unicode encoding when moving data between systems?
 
 
    
