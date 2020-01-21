@@ -190,7 +190,7 @@ x = soup('a')
 
 ##### Answer: Encode 
 
-## Assignment: Scraping HTML Data with BeautifulSoup
+## Assignment 1: Scraping HTML Data with BeautifulSoup
 
 In this assignment you will write a Python program to use urllib to read the HTML from the data files below, and parse the data, extracting numbers and compute the sum of the numbers in the file.
 
@@ -215,6 +215,55 @@ for tag in tags:  # Look at the parts of a tag
    print 'Attrs:',tag.attrs
    
 You need to adjust this code to look for span tags and pull out the text content of the span tag, convert them to integers and add them up to complete the assignment.
+
+### Answer
+
+    from urllib import request
+    from bs4 import BeautifulSoup
+    html=request.urlopen('http://python-data.dr-chuck.net/comments_60347.html').read()
+    soup = BeautifulSoup(html)
+    tags=soup('span')
+    sum=0
+    for tag in tags:
+        sum=sum+int(tag.contents[0])
+    print(sum)
+    
+## Assignment 2: Following Links in HTML Using BeautifulSoup
+
+In this assignment you will write a Python program that expands on https://www.py4e.com/code3/urllinks.py. The program will use urllib to read the HTML from the data files below, extract the href= vaues from the anchor tags, scan for a tag that is in a particular position from the top and follow that link, repeat the process a number of times, and report the last name you find.
+
+Strategy
+The web pages tweak the height between the links and hide the page after a few seconds to make it difficult for you to do the assignment without writing a Python program. But frankly with a little effort and patience you can overcome these attempts to make it a little harder to complete the assignment without writing a Python program. But that is not the point. The point is to write a clever Python program to solve the program.
+
+### Answer
+
+# http://py4e-data.dr-chuck.net/known_by_Modu.html
+
+# Ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+import urllib.request, urllib.parse, urllib.error
+from bs4 import BeautifulSoup
+import ssl
+
+taglist=list()
+url = input('Enter URL: ')
+
+count=int(input("Enter count:"))
+position=int(input("Enter position:"))
+for i in range(count):
+    print ("Retrieving:",url)
+    html = urllib.request.urlopen(url, context=ctx).read()
+    soup=BeautifulSoup(html,'html.parser')
+    tags=soup('a')
+    for tag in tags:
+        taglist.append(tag)
+    url = taglist[position-1].get('href', None)
+    del taglist[:]
+print ("Retrieving:",url)
+
 
 
 
