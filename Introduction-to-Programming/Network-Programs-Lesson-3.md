@@ -131,7 +131,9 @@ mysock.close()
 ##### Answer: mysock.recv()
 
 #### 3. Which of the following regular expressions would extract the URL from this line of HTML:
-<p>Please click <a href="http://www.dr-chuck.com">here</a></p>
+Please click <a href="http://www.dr-chuck.com">  here</a></p>
+
+##### Answer: http://.*
 
 #### 4. In this Python code, which line is most like the open() call to read a file:
 
@@ -149,18 +151,71 @@ while True:
     print(data.decode())
 mysock.close()
 
+##### Answer: mysock.connect()
+
 #### 5. Which HTTP header tells the browser the kind of document that is being returned?
+
+##### Answer: Content-Type
 
 #### 6. What should you check before scraping a web site?
 
+##### Answer: That the web site allows scraping
+
 #### 7. What is the purpose of the BeautifulSoup Python library?
+
+##### Answer: It repairs and parses HTML to make it easier for a program to understand.
 
 #### 8. What ends up in the "x" variable in the following code:
 html = urllib.request.urlopen(url).read()
 soup = BeautifulSoup(html, 'html.parser')
 x = soup('a')
 
-#### 9. What is the most common Unicode encoding when moving data between systems?
+##### Answer: A list of all the anchor tags (<a..) in the HTML from the URL
+
+#### 9. What is the most common Unicode encoding when moving data between systems? 
+
+##### Answer: UTF-8
+
+#### 10. What is the ASCII character that is associated with the decimal value 42?
+
+##### Answer: *
+
+#### 11. What word does the following sequence of numbers represent in ASCII: 108, 105, 110, 101
+##### Answer: line
+#### 12. How are strings stored internally in Python 3?
+
+##### Answer: Unicode
+
+#### 13. When reading data across the network (i.e. from a URL) in Python 3, what method must be used to convert it to the internal format used by strings?
+
+##### Answer: Encode 
+
+## Assignment: Scraping HTML Data with BeautifulSoup
+
+In this assignment you will write a Python program to use urllib to read the HTML from the data files below, and parse the data, extracting numbers and compute the sum of the numbers in the file.
+
+#### Data Format
+The file is a table of names and comment counts. You can ignore most of the data in the file except for lines like the following:
+
+    <tr><td>Modu</td><td><span class="comments">90</span></td></tr>
+    <tr><td>Kenzie</td><td><span class="comments">88</span></td></tr>
+    <tr><td>Hubert</td><td><span class="comments">87</span></td></tr>
+    
+You are to find all the <span> tags in the file and pull out the numbers from the tag and sum the numbers.
+Look at the sample code provided. It shows how to find all of a certain kind of tag, loop through the tags and extract the various aspects of the tags.
+
+...
+
+tags = soup('a')  # Retrieve all of the anchor tags
+for tag in tags:  # Look at the parts of a tag
+   
+   print 'TAG:',tag
+   print 'URL:',tag.get('href', None)
+   print 'Contents:',tag.contents[0]
+   print 'Attrs:',tag.attrs
+   
+You need to adjust this code to look for span tags and pull out the text content of the span tag, convert them to integers and add them up to complete the assignment.
+
 
 
    
