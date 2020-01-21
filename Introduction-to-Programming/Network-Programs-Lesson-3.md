@@ -71,8 +71,97 @@
  
 #### What is Web Scraping?
 
-    * When a program or script pretends to be a browser and retrieves web pages, looks at those web pages, extracts information, and then looks at more web pages.
-    * Search engines scrape web pages - we all this "spidering the web" or "web crawling" 
+1. Why Scrape? 
+   * Pull data - particularly social data - who link to who?
+   * Get your own data back out of some system that has no "export capability"  
+   * Monitor a site for new information
+   * Spider the web to make a database for a search engine
+   * When a program or script pretends to be a browser and retrieves web pages, looks at those web pages, extracts information, and then looks at more web pages.
+   * Search engines scrape web pages - we all this "spidering the web" or "web crawling" 
+   * To parse HTML, you can used a free library called BeautifulSoup from www.crummy.com
+   
+   #### code example
+   
+       # To run this, download the BeautifulSoup zip file
+       # http://www.py4e.com/code3/bs4.zip
+       # and unzip it in the same directory as this file
+
+       import urllib.request, urllib.parse, urllib.error
+       from bs4 import BeautifulSoup
+       import ssl
+
+       # Ignore SSL certificate errors
+       ctx = ssl.create_default_context()
+       ctx.check_hostname = False
+       ctx.verify_mode = ssl.CERT_NONE
+
+       url = input('Enter - ')
+       html = urllib.request.urlopen(url, context=ctx).read()
+       soup = BeautifulSoup(html, 'html.parser')
+
+       # Retrieve all of the anchor tags
+       tags = soup('a')
+       for tag in tags:
+           print(tag.get('href', None))
+
+## Quiz: Reading Web Data From Python
+
+1. Which of the following Python data structures is most similar to the value returned in this line of Python:
+
+x = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+
+** Answer: file handle **
+
+2. In this Python code, which line actually reads the data?
+
+import socket
+
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('data.pr4e.org', 80))
+cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\n\n'.encode()
+mysock.send(cmd)
+
+while True:
+    data = mysock.recv(512)
+    if (len(data) < 1):
+        break
+    print(data.decode())
+mysock.close()
+
+3. Which of the following regular expressions would extract the URL from this line of HTML:
+<p>Please click <a href="http://www.dr-chuck.com">here</a></p>
+
+4. In this Python code, which line is most like the open() call to read a file:
+
+import socket
+
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('data.pr4e.org', 80))
+cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\n\n'.encode()
+mysock.send(cmd)
+
+while True:
+    data = mysock.recv(512)
+    if (len(data) < 1):
+        break
+    print(data.decode())
+mysock.close()
+
+5. Which HTTP header tells the browser the kind of document that is being returned?
+
+6. What should you check before scraping a web site?
+
+7. What is the purpose of the BeautifulSoup Python library?
+
+8. What ends up in the "x" variable in the following code:
+html = urllib.request.urlopen(url).read()
+soup = BeautifulSoup(html, 'html.parser')
+x = soup('a')
+
+9. What is the most common Unicode encoding when moving data between systems?
+
+
+   
     
 
 
