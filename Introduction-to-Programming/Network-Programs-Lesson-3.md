@@ -237,32 +237,29 @@ The web pages tweak the height between the links and hide the page after a few s
 
 ### Answer
 
+    ctx = ssl.create_default_context()    # Ignore SSL certificate errors
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE 
 
+    import urllib.request, urllib.parse, urllib.error
+    from bs4 import BeautifulSoup
+    import ssl
 
+    taglist=list()
+    url = input('Enter URL: ')        # http://py4e-data.dr-chuck.net/known_by_Modu.html
 
-ctx = ssl.create_default_context()    # Ignore SSL certificate errors
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE 
-
-import urllib.request, urllib.parse, urllib.error
-from bs4 import BeautifulSoup
-import ssl
-
-taglist=list()
-url = input('Enter URL: ')        # http://py4e-data.dr-chuck.net/known_by_Modu.html
-
-count=int(input("Enter count:"))
-position=int(input("Enter position:"))
-for i in range(count):
+    count=int(input("Enter count:"))
+    position=int(input("Enter position:"))
+    for i in range(count):
+        print ("Retrieving:",url)
+        html = urllib.request.urlopen(url, context=ctx).read()
+        soup=BeautifulSoup(html,'html.parser')
+        tags=soup('a')
+        for tag in tags:
+            taglist.append(tag)
+        url = taglist[position-1].get('href', None)
+        del taglist[:]
     print ("Retrieving:",url)
-    html = urllib.request.urlopen(url, context=ctx).read()
-    soup=BeautifulSoup(html,'html.parser')
-    tags=soup('a')
-    for tag in tags:
-        taglist.append(tag)
-    url = taglist[position-1].get('href', None)
-    del taglist[:]
-print ("Retrieving:",url)
 
 
 
