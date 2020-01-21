@@ -237,19 +237,19 @@ The web pages tweak the height between the links and hide the page after a few s
 
 ### Answer
 
-# http://py4e-data.dr-chuck.net/known_by_Modu.html
 
-# Ignore SSL certificate errors
-ctx = ssl.create_default_context()
+
+
+ctx = ssl.create_default_context()    # Ignore SSL certificate errors
 ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
+ctx.verify_mode = ssl.CERT_NONE 
 
 import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup
 import ssl
 
 taglist=list()
-url = input('Enter URL: ')
+url = input('Enter URL: ')        # http://py4e-data.dr-chuck.net/known_by_Modu.html
 
 count=int(input("Enter count:"))
 position=int(input("Enter position:"))
